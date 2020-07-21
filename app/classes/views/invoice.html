@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice {{ id }}</title>
+</head>
+
+<body>
+  <style>
+    @font-face {
+      font-family: 'Arial Narrow';
+      src: url('fonts/arial-narrow.ttf') format("truetype");
+    }
+
+    @font-face {
+      font-family: 'Arial';
+      src: url('fonts/arial.ttf') format("truetype");
+    }
+
+    @font-face {
+      font-family: 'Times New Roman.';
+      src: url('fonts/TimesNewRoman.ttf') format("truetype");
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      padding: 0
+    }
+
+
+    .page {
+      height: inherit;
+      width: inherit;
+    }
+
+    .wrapper {
+      padding: 10mm 15mm 10mm 15mm;
+      height: inherit;
+      width: inherit;
+    }
+
+    .block__wrapper {
+      padding: 2mm 4mm 2mm 3mm;
+    }
+
+    .title {
+      color: #8585d6;
+      font-weight: 300;
+      font-size: 35pt;
+    }
+
+    .title-2 {
+      font-size: 13pt;
+    }
+
+    .subtitle {
+      font-size: 21pt;
+      color: #cccccc;
+      text-transform: uppercase;
+    }
+
+    .inline-space-between {
+      display: inline-block;
+      width: 100%;
+      vertical-align: text-top;
+    }
+
+    .inline-space-between>span {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .float-right {
+      float: right;
+    }
+
+    .full_width {
+      width: 100%;
+    }
+
+    .half_width {
+      width: 50%;
+    }
+
+    .block {
+      margin: 40px 0;
+    }
+
+    .block-theme-light-violet {
+      background-color: #d4d3ff;
+    }
+
+    .text-simple {
+      font-size: 13pt;
+    }
+
+    .header__right-side {
+      float: right;
+    }
+
+    .location {
+      display: inline-block;
+      width: 215px;
+    }
+
+    .location span {
+      text-align: right;
+      width: 100%;
+      display: inline-block;
+    }
+
+    .table {
+      width: 100%;
+    }
+
+    .table thead tr {
+      text-align: left;
+    }
+
+    .table__row-theme-grey {
+      background-color: #999999;
+      ;
+    }
+
+    .table__row-theme-light-grey {
+      background-color: #d9d9d9;
+    }
+
+    .table,
+    th,
+    td {
+      border: 1px solid #999999;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 4mm;
+    }
+
+    .text-light-theme {
+      color: #ffffff;
+      font-weight: 200;
+    }
+
+    .text-light-grey-theme {
+      color: #999999;
+      ;
+      font-weight: 200;
+    }
+
+    .text-blue-theme {
+      color: #2f2e6b;
+      ;
+    }
+
+    .text-green-theme {
+      color: #008000;
+    }
+
+    .ft-13 {
+      font-size: 13pt;
+    }
+
+    .ft-14 {
+      font-size: 14pt;
+    }
+
+    .ft-12 {
+      font-size: 12pt;
+    }
+
+    .ft-30 {
+      font-size: 30pt;
+      font-weight: 300;
+    }
+
+    .ft-16 {
+      font-size: 16pt;
+    }
+
+    .light-font {
+      font-weight: 200;
+    }
+
+    .mg-10-tp-btm {
+      margin: 10px 0;
+    }
+
+    .text-align-right {
+      text-align: right;
+    }
+
+    .services td:not(:first-child) {
+      text-align: right;
+    }
+
+    .ft_arial_narrow {
+      font-family: 'Arial Narrow';
+    }
+
+    .ft_times_new_roman {
+      font-family: 'Times New Roman';
+    }
+
+    .ft_arial {
+      font-family: 'Arial';
+      font-weight: normal;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .light {
+      font-weight: 100;
+    }
+
+    .ln-hg-8mm {
+      line-height: 8mm;
+    }
+  </style>
+
+  <div class="page">
+    <div class="wrapper">
+
+      <header class="header inline-space-between">
+        <span class="header__left-side">
+          <h1 class="title ft_arial_narrow">Q-Digital</h1>
+          <span class="subtitle ft_arial_narrow"> INVOICE {{ id }} / {{ dateCreated }}</span>
+        </span>
+        <span class="header__right-side">
+          <div class="location">
+            <span class="ft_arial light ft-14 ln-hg-8mm">Russia, Udmurt Republic, Izhevsk City, Votkinskoye
+              <span>Highway 114-1</span>
+            </span>
+          </div>
+        </span>
+      </header>
+
+      <section class="block">
+        <h2 class="title-2 ft_arial bold">
+          Invoice to:
+        </h2>
+        <div class="text-simple half_width ft_times_new_roman mg-10-tp-btm">
+          {{ nameClient }}
+          <br> Address: {{ address }}
+        </div>
+      </section>
+
+      <section class="block block-theme-light-violet">
+        <div class="block__wrapper">
+          <div class="inline-space-between ">
+            <span class="title-2 ft_times_new_roman bold">{{ nameClient }}</span>
+            <span class="float-right">
+              <div class="text-blue-theme ft-11 text-align-right ft_arial bold">
+                <b>BALANCE DUE</b>
+              </div>
+              <div class="text-blue-theme ft-11 text-align-right mg-10-tp-btm ft_arial_narrow">Upon Receipt</div>
+              <div class="text-green-theme ft-30 text-align-right ft_arial_narrow">$ {{ total }}</div>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <table class="table">
+          <thead class="table__row table__row-theme-grey">
+            <tr>
+              <th class="text-light-theme ft_arial_narrow ft-13">Item Description</th>
+              <th class="text-light-theme text-align-right ft_arial_narrow ft-13">Quantity</th>
+              <th class="text-light-theme text-align-right ft_arial_narrow ft-13">Price Per</th>
+              <th class="text-light-theme text-align-right ft_arial_narrow ft-13">Total</th>
+            </tr>
+          </thead>
+          <tfoot class="table__row table__row-theme-grey">
+            <tr>
+              <td></td>
+              <td></td>
+              <td class="text-light-theme text-align-right ft_arial_narrow">TOTAL</td>
+              <td class="text-light-theme text-align-right ft_arial_narrow">${{ total }}</td>
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr class="text-simple services">
+              {{#services services}} {{/services}}
+            </tr>
+            <tr class="table__row-theme-light-grey text-align-right">
+              <td></td>
+              <td></td>
+              <td class="text-light-grey-theme ft_arial_narrow">Subtotal</td>
+              <td class="text-light-grey-theme ft_arial_narrow">${{ total }}</td>
+            </tr>
+            <tr class="table__row-theme-light-grey">
+              <td></td>
+              <td></td>
+              <td class="text-align-right text-light-grey-theme ft_arial_narrow">Tax - 0%</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="block ft_arial">
+        <h2 class="title-2 mg-10-tp-btm ft-16">Bank Account details:</h2>
+        <div class="text-simple mg-10-tp-btm">Account: {{ account }}</div>
+        <div class="text-simple mg-10-tp-btm">Currency: USD</div>
+        <div class="text-simple mg-10-tp-btm">Name: {{ nameAccount }}</div>
+        <div class="text-simple mg-10-tp-btm">Bank: {{ bank }}</div>
+        <div class="text-simple mg-10-tp-btm">Swift: {{ swift }}</div>
+        <div class="text-simple mg-10-tp-btm">Bank address: {{ bankAddress }}</div>
+        <div class="text-simple mg-10-tp-btm">Country: {{ country }}</div>
+        <div class="text-simple mg-10-tp-btm">City: {{ city }}</div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
